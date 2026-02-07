@@ -4,6 +4,9 @@ const cors = require('cors')
 const app = express();
 app.use(express.json());
 app.use(cors());
+const path = require('path')
+
+app.use(express.static("./public")) // middlewear to get js and css files from public folder
 
 // .create() -> will create collection of data
 app.post("/notes", async (req, res) => {
@@ -38,7 +41,7 @@ app.delete("/notes/:id", async (req, res) => {
 })
 
 
-//patch -> will update the document by id
+//patch -> will update one element of document by id
 app.patch("/notes/:id", async (req, res) => {
     const id = req.params.id
     const { description } = req.body
@@ -64,6 +67,12 @@ app.put("/notes/:id", async (req, res) => {
     res.status(200).json({
         message: "note updated succesfully"
     })
+})
+
+// console.log(__dirname)
+app.use('*name', (req, res) => {
+    // res.send("This is wildcard route")
+    res.sendFile(path.join(__dirname,'..','public/index.html'))
 })
 
 module.exports = app;
