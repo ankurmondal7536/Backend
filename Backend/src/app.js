@@ -5,7 +5,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 // .create() -> will create collection of data
 app.post("/notes", async (req, res) => {
     const { title, description, age } = req.body
@@ -51,8 +50,20 @@ app.patch("/notes/:id", async (req, res) => {
     res.status(200).json({
         message: "note updated succesfully"
     })
+})
 
 
+//put -> will update the document by id
+app.put("/notes/:id", async (req, res) => {
+    const id = req.params.id
+    const { title, description, age } = req.body
+
+    await noteModel.findByIdAndUpdate(id, {
+        title, description, age
+    })
+    res.status(200).json({
+        message: "note updated succesfully"
+    })
 })
 
 module.exports = app;

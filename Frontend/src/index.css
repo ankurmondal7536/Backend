@@ -18,17 +18,43 @@ html{
 
 .notes{
   display: flex;
-  gap: 1rem;
+  gap: 1.3rem;
   padding-block: 1rem;
   padding-inline: 3rem;
   flex-wrap: wrap;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
 .note{
   background-color: #494949;
+  display: flex; 
+  flex-direction: column; 
+  flex-wrap: wrap;
+  gap: 0.4rem;
   padding: 1rem;
   border-radius: 0.7rem;
   max-width: 30rem;
-  color: rgb(255, 253, 249);
+  color: white;
+}
+.note button{
+  width: 8rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+
+}
+.create-note-form{
+  display: flex;
+  height: 6rem;
+  gap: 1rem;
+  border-radius: 2rem;
+  padding-inline: 3rem;
+  padding-block: 1rem;
+  flex-wrap: wrap;
+}
+.create-note-form button{
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  /* border: none;
+  outline: none; */
+  background-color: #b4b1b1;
 }
